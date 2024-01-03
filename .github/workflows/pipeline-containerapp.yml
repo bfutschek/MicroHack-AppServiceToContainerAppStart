@@ -19,7 +19,6 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.x
-        include-prerelease: true
         
     - name: Restore dependencies
       run: dotnet restore
@@ -48,7 +47,7 @@ jobs:
     - name: Deploy to Container App
       uses: azure/container-apps-deploy-action@v2
       with:
-         imageToDeploy: microhackregistry.azurecr.io/microhackapp:${{ steps.get_tag.outputs.image_tag }}
+         imageToDeploy: microhackregistrybfutschek.azurecr.io/microhackapp:${{ steps.get_tag.outputs.image_tag }}
          acrUsername: ${{ secrets.ACR_USERNAME }}
          acrPassword: ${{ secrets.ACR_PASSWORD }}
          resourceGroup: MicroHack-AppServiceToContainerApp
